@@ -1,20 +1,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User input Start
 coor = [...
-    0 0 0
-    1 0 0
-    1 1 0
-    0 1 0
-    0 0 1
-    1 0 1
-    1 1 1
-    0 1 1];
+    0 -1.0 0
+    3 -1.0 0
+    3  1.0 0
+    0  1.0 0
+    0 -1.0 1
+    3 -1.0 1
+    3  1.0 1
+    0  1.0 1];
 
-BC_T = {...
-    'x', 0, 'u', 0
-    'y', 0, 'v', 0
-    'z', 0, 'w', 0};
+BC_T = {
+    'x',    0, 'u', 0
+    'y', -1.0, 'v', 0
+    'z',    0, 'w', 0};
 
-FORCE_Tx = {'x', 1, 'u', 1.0*40};
+FORCE_Tx = {'x', 3, 'u', 1.0*10};
 
 NR_tol = 1e-10;%1e-11;
 max_iter = 100;%20
@@ -24,7 +24,7 @@ plot = true;
 
 
 [nodes, elements, nen, ngp, numnp, numel, ndm, BC, FORCE] =...
-    Generate_mesh(eltype, coor, BC_T, FORCE_Tx, plot, 3, 3, 3);
+    Generate_mesh(eltype, coor, BC_T, FORCE_Tx, plot, 2, 2, 1);
 nummat = 1;
 material = 1; % Elastic 3D
 props = {...

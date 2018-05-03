@@ -9,22 +9,24 @@ coor = [...
     BC_T = {'x', 0, 'u', 0
             'y', 0, 'v', 0}; 
         
-    FORCE_Tx = {'x', 1, 'u', 40};       
+    FORCE_Tx = {'x', 1, 'u', 20};       
          
     NR_tol = 1e-10;%1e-11;
     max_iter = 100;%20
-    n_steps = 1;
-    eltype = 'T6';
-    plot = true;
+    n_steps = 10;
+    eltype = 'Q4';
+    plot = false;
     
 
     [nodes, elements, nen, ngp, numnp, numel, ndm, BC, FORCE] =...
-        Generate_mesh(eltype, coor, BC_T, FORCE_Tx, plot, 3, 3, 3);
+        Generate_mesh(eltype, coor, BC_T, FORCE_Tx, plot, 1, 1, 1);
     nummat = 1;
-    material = 1; % PlaneStrain
+    material = 2; % Hypo
     props = {...
-        'E', 200
-        'v', 0.25};
+        'sig_0', 10.00
+        'eps_0', 0.001
+        'n'  , 10.00
+        'nu' , 0.300};
     
     ndof = 2;
     numeq = ndof*numnp;

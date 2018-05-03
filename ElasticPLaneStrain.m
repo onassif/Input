@@ -20,7 +20,7 @@ plot = true;
 [nodes, elements, nen, ngp, numnp, numel, ndm, BC, FORCE] =...
     Generate_mesh(eltype, coor, BC_T, FORCE_Tx, plot, 3, 3, 3);
 nummat = 1;
-material = 2; % PlaneStrain
+material = 1; % PlaneStrain
 props = {...
     'E', 200
     'v', 0.25};
@@ -31,10 +31,6 @@ numeq = ndof*numnp;
 
 %     options for props (substitute what's inside < > with a numeric value):
 %     material 1:
-%     props = {'E',<young's modulus>
-%              'v',<poisson's ratio>}
-
-%     material 2:
 %     props = {'E',<young's modulus>
 %              'v',<poisson's ratio>}
 

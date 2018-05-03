@@ -24,7 +24,7 @@ plot = true;
 
 
 [nodes, elements, nen, ngp, numnp, numel, ndm, BC, FORCE] =...
-    Generate_mesh(eltype, coor, BC_T, FORCE_Tx, plot, 2, 2, 1);
+    Generate_mesh(eltype, coor, BC_T, FORCE_Tx, plot, 3, 2, 1);
 nummat = 1;
 material = 1; % Elastic 3D
 props = {...

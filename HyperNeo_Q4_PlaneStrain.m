@@ -7,7 +7,7 @@ coor = [...
     0 1];
     
     BC_T = {'x', 0, 'u', 0
-            'x', 1, 'u', 0.2 
+            'x', 1, 'u', 0.4 
             'y', 0, 'v', 0}; 
         
     FORCE_Tx = {'x', 1, 'u', 0};       
@@ -16,11 +16,11 @@ coor = [...
     max_iter = 100;%20
     n_steps = 4;
     eltype = 'Q4';
-    plot = true;
+    plot = false;
     
 
     [nodes, elements, nen, ngp, numnp, numel, ndm, BC, FORCE] =...
-        Generate_mesh(eltype, coor, BC_T, FORCE_Tx, plot, 3, 3, 3);
+        Generate_mesh(eltype, coor, BC_T, FORCE_Tx, plot, 1, 1, 1);
     nummat = 1;
     material = 3; % HyperNeo
     props = {...

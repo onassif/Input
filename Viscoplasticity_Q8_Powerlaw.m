@@ -1,35 +1,59 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User input Start
 coor = [...
-    0 0 
-    1 0 
-    1 1 
-    0 1 ];
+    0 0 0 
+    1 0 0
+    1 1 0
+    0 1 0
+    0 0 1
+    1 0 1
+    1 1 1
+    0 1 1];
 
 BC_T = {...
     'x', 0, 'u', 0
-    'y', 0, 'v', 0};
+    'y', 0, 'v', 0
+    'z', 0, 'w', 0
+};
+% fctr_BC  =[...
+%     1 1
+%     1 1];
 
-FORCE_Tx = {'x', 1, 'u', 1.0*40};
+FRCE = {'x', 1, 'u', 20};
+% FRCE = {...
+%     'x', 1, 'u', -1000
+%     'y', 5, 'v', -4000};
+% fctr_FRCE=[...
+%     1 1
+%     1 0];
+
+time =[2 20];
+
+% fctr(1:size(fctr_BC  ,1),1:size(fctr_BC  ,2),1) =fctr_BC;
+% fctr(1:size(fctr_FRCE,1),1:size(fctr_FRCE,2),2) =fctr_FRCE;
+
 
 NR_tol = 1e-10;%1e-11;
-max_iter = 100;%20
-n_steps = 60;
-total_time= 3;
-eltype = 'Q4';
-plot = true;
+max_iter = 20;%20
+n_steps = sum(time(:,2));
+total_time= time(end,1);
+eltype = 'Q8';
+plot = false;
 
 
 [nodes, elements, nen, ngp, numnp, numel, ndm, BC, FORCE] =...
-    Generate_mesh(eltype, coor, BC_T, FORCE_Tx, plot, 1, 1);
+    Generate_mesh(eltype, coor, BC_T, FRCE, plot, 2, 2, 2);
 nummat = 1;
-material = 4; % Elastic 3D
-    props = {'E'     ,12000
-             'v'     ,0.3
-             'K'     ,90000
-             'H'     ,100
-             'yield' ,300};
-
-ndof = 2;
+material = 4; % RI Plastic planestrain
+props = {...
+    'E'    , 10000
+    'nu'   , 0.3
+    'Y'    , 15
+    'e0'   , 0.5
+    'n'    , 10
+    'edot0', 0.1
+    'm'    , 10};
+    
+ndof = 3;
 numeq = ndof*numnp;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User input End
 
@@ -51,5 +75,5 @@ numeq = ndof*numnp;
 %              'v'     ,<poisson's ratio>
 %              'K'     ,<Isoparametric modulus>
 %              'H'     ,<Kinematic modulus>
-%              'yield' ,<yield stress>};
+%              'Y'     ,<yield stress>};
 %              

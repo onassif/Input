@@ -18,9 +18,9 @@ FORCE_Tx = {'x', 1, 'u', 1.0*40};
 
 NR_tol = 1e-10;%1e-11;
 max_iter = 100;%20
-n_steps = 4;
+n_steps = 8;
 eltype = 'Q8';
-plot = true;
+plot = false;
 
 
 [nodes, elements, nen, ngp, numnp, numel, ndm, BC, FORCE] =...

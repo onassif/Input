@@ -21,7 +21,7 @@ NR_tol = 1e-10;%1e-11;
 max_iter = 100;%20
 n_steps = 4;
 eltype = 'Q8';
-plot = true;
+plot = false;
 
 
 [nodes, elements, nen, ngp, numnp, numel, ndm, BC, FORCE] =...

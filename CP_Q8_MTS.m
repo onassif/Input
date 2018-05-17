@@ -1,23 +1,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User input Start
 coor = [...
     0 0 0 
-    1 0 0
-    1 1 0
+    1 0 0 
     0 1 0
+    1 1 0
     0 0 1
     1 0 1
-    1 1 1
-    0 1 1];
+    0 1 1
+    1 1 1];
 
 BC_T = {...
     'x', 0, 'u', 0
     'y', 0, 'v', 0
     'z', 0, 'w', 0
     'z', 1, 'w', 0
-    'node', 2, 'u', 0.002
-    'node', 6, 'u', 0.002
-    'node', 4, 'u', 0.0022
-    'node', 8, 'u', 0.0022
+    'y', 0, 'u', 0.002
+    'y', 1, 'u', 0.0022
 };
 
 FRCE = {'x', 0, 'u', 0};
@@ -44,7 +42,7 @@ plot = false;
 
 
 [nodes, elements, nen, ngp, numnp, numel, ndm, BC, FORCE] =...
-    Generate_mesh(eltype, coor, BC_T, FRCE, plot, 4, 1, 1);
+    Generate_mesh(eltype, coor, BC_T, FRCE, plot, 8, 8, 8);
 nummat = 1;
 material = 7;
 props = {...

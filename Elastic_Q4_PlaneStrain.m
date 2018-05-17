@@ -15,7 +15,7 @@ coor = [...
     max_iter = 100;%20
     n_steps = 1;
     eltype = 'Q4';
-    plot = true;
+    plot = false;
     
 
     [nodes, elements, nen, ngp, numnp, numel, ndm, BC, FORCE] =...

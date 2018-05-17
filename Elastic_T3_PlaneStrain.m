@@ -15,7 +15,7 @@ coor = [...
     max_iter = 100;%20
     n_steps = 1;
     eltype = 'T3';
-    plot = true;
+    plot = 1;
     
 
     [nodes, elements, nen, ngp, numnp, numel, ndm, BC, FORCE] =...

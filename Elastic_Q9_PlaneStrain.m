@@ -14,12 +14,12 @@ coor = [...
     NR_tol = 1e-10;%1e-11;
     max_iter = 100;%20
     n_steps = 1;
-    eltype = 'Q4';
+    eltype = 'Q9';
     plot = true;
     
 
     [nodes, elements, nen, ngp, numnp, numel, ndm, BC, FORCE] =...
-        Generate_mesh(eltype, coor, BC_T, FORCE_Tx, plot, 1, 1, 1);
+        Generate_mesh(eltype, coor, BC_T, FORCE_Tx, plot, 2, 2, 1);
     nummat = 1;
     material = 1; % PlaneStrain
     props = {...

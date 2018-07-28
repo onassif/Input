@@ -15,7 +15,7 @@ FORCE_Tx = {'x', 0, 'u', 0};
 NR_tol = 1e-10;%1e-11;
 max_iter = 100;%20
 n_steps = 1;
-eltype = 'Q4';
+eltype = 'T3';
 plot = 0;
 
 
@@ -23,24 +23,22 @@ plot = 0;
 
 nodes = [nodes; 1 0; 1 1];
 elements = [...
-   1 2 5 4 1   
-   7 3 6 8 2
-   8 7 3 6 3
-   2 5 4 1 3];
-numnp  = 8;
-nel = 4;
+   1 2 4 1
+   2 5 4 1
+   7 3 8 1
+   3 6 8 1
+   8 7 3 2
+   2 5 4 2];
+numnp  = size(nodes,1);
+nel = size(elements,1);
 [BC, FORCE] = generateBC(BC_T, FORCE_Tx, nodes, elements, eltype, ndm, numnp, nel);
 
-
-
 material = [...
-   1
    1
    8];
 props = {...
    {'E', 190e3; 'v', 0.3}
-   {'E', 190e3; 'v', 0.3}
-   {'L', 2; 'R', 1}};
+   {'L', 1; 'R', 1}};
 
 ndof = 2;
 numeq = ndof*numnp;

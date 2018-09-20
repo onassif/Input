@@ -1,17 +1,20 @@
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User input Start
 
 coor = [...
-    0 0
-    1 0
-    1 1
-    0 1];
+    0  0
+    40 0
+    40 20
+    0  20];
     
-    BC_T = {'x', 0, 'u', 0
-            'y', 0, 'v', 0}; 
+    BC_T = {...
+       'node', 1, 'v', 0
+       'node', 2, 'u', 0
+       'node', 2, 'v', 0}; 
         
+%     FORCE_Tx = {'y', 20, 'v', -0.2};    
     FORCE_Tx = {...
-       'x', 1, 'u', 40
-       'y', 1, 'v', 40};       
+       'node', 3, 'v', -4
+       'node', 4, 'v', -4}; 
          
     NR_tol = 1e-10;%1e-11;
     max_iter = 100;%20
@@ -21,13 +24,13 @@ coor = [...
     
 
     [nodes, elements, nen, ngp, numnp, numel, ndm] =...
-        generateMesh(eltype, coor, plot, 3, 3, 3);
+        generateMesh(eltype, coor, plot, 1, 1, 1);
     [BC, FORCE] = generateBC(BC_T, FORCE_Tx, nodes, elements, eltype, ndm, numnp, numel);
 
     nummat = 1;
     material = 1; % PlaneStrain
     props = {...
-        'E', 200
+        'E', 1e6
         'v', 0.25};
     
     ndof = 2;

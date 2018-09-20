@@ -23,15 +23,12 @@ plot = 0;
 
 nodes = [nodes; 1 0; 1 1];
 elements = [...
-   1 2 5 4 1   
-   7 3 6 8 2
-   8 7 3 6 3
-   2 5 4 1 3];
+   1 2 5 4 0 0 0 0 1   
+   7 3 6 8 0 0 0 0 2
+   8 7 3 6 2 5 4 1 3];
 numnp  = 8;
-nel = 4;
-[BC, FORCE] = generateBC(BC_T, FORCE_Tx, nodes, elements, eltype, ndm, numnp, nel);
-
-
+nel = 3;
+[BC, FORCE] = generateBC(BC_T, FORCE_Tx, nodes, elements, eltype, ndm, numnp, numel);
 
 material = [...
    1

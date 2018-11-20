@@ -2,31 +2,35 @@
 
 coor = [...
     0 0
-    2 0
-    2 1
+    1 0
+    1 1
     0 1];
     
-    BC_T = {'x', 0, 'u', 0
-            'y', 0, 'v', 0
-            'x', 2, 'u', 0.1}; 
+    BC_T = {'node', 1, 'u', 0
+            'node', 3, 'u', 0
+            'node', 1, 'v', 0
+            'node', 2, 'v', 0           
+            'node', 3, 'v', 0
+            'node', 4, 'v', 0}; 
         
-    FORCE_Tx = {'x', 0, 'u', 0};       
+    FORCE_Tx = {...
+       'x', 1, 'u', 1};       
          
     NR_tol = 1e-10;%1e-11;
     max_iter = 100;%20
     n_steps = 1;
     eltype = 'Q4';
-    plot = 1;
+    plot = 0;
     
 
-    [nodes, elements, nen, ngp, numnp, numel, ndm] = generateMesh(eltype, coor, plot, 2, 1, 1);
+    [nodes, elements, nen, ngp, numnp, numel, ndm] = generateMesh(eltype, coor, plot, 3, 3, 1);
     [BC, FORCE] = generateBC(BC_T, FORCE_Tx, nodes, elements, eltype, ndm, numnp, numel);
 
     nummat = 1;
     material = 1; % PlaneStrain
     props = {...
         'E', 200
-        'v', 0.25};
+        'nu', 0.25};
     
     ndof = 2;
     numeq = ndof*numnp;

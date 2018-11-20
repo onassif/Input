@@ -15,9 +15,7 @@ BC_T = {...
     'z', 0, 'w', 0};
 
 FORCE_Tx = {...
-   'x', 1, 'u', 1.0*40
-   'y', 1, 'v', 1.0*40
-   'z', 1, 'w', 1.0*40};
+   'x', 1, 'u', 1/2};
 
 % FORCE_Tx = {...
 %     'x', 1, 'u', 1.0*40
@@ -29,18 +27,18 @@ FORCE_Tx = {...
 
 NR_tol = 1e-10;%1e-11;
 max_iter = 100;%20
-n_steps = 8;
+n_steps = 1;
 eltype = 'Q8';
 plot = false;
 
 
-[nodes, elements, nen, ngp, numnp, numel, ndm] = generateMesh(eltype, coor, plot, 1, 1, 1);
+[nodes, elements, nen, ngp, numnp, numel, ndm] = generateMesh(eltype, coor, plot, 4, 4, 4);
 [BC, FORCE] = generateBC(BC_T, FORCE_Tx, nodes, elements, eltype, ndm, numnp, numel);
 nummat = 1;
 material = 1; % Elastic 3D
 props = {...
-    'E', 200
-    'v', 0.25};
+    'E' , 200
+    'nu', 0.25};
 
 ndof = 3;
 numeq = ndof*numnp;

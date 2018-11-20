@@ -30,7 +30,7 @@ nummat = 1;
 material = 1; % Elastic 3D
 props = {...
     'E', 200
-    'v', 0.25};
+    'nu', 0.25};
 
 ndof = 3;
 numeq = ndof*numnp;

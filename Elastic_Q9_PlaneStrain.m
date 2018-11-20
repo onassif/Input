@@ -17,7 +17,7 @@ coor = [...
     max_iter = 100;%20
     n_steps = 1;
     eltype = 'Q9';
-    plot = true;
+    plot = false;
     
 
     [nodes, elements, nen, ngp, numnp, numel, ndm] = generateMesh(eltype, coor, plot, 3, 3, 1);
@@ -27,7 +27,7 @@ coor = [...
     material = 1; % PlaneStrain
     props = {...
         'E', 200
-        'v', 0.25};
+        'nu', 0.25};
     
     ndof = 2;
     numeq = ndof*numnp;

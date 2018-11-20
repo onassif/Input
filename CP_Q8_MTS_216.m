@@ -11,14 +11,13 @@ coor = [...
 
 BC_T = {...
     'x'   , 0, 'u', 0
-    'node', 1, 'v', 0
-    'node', 5, 'v', 0
+    'y'   , 0, 'v', 0
     'z'   , 0, 'w', 0
-    'z'   , 1, 'w', 0
     'y'   , 0, 'u', 0.012
-    'y'   , 1, 'u', 0.0132};
+    'y'   , 1, 'u', 0.0132
+};
 
-FRCE = {'x', 0, 'u', 0};
+FRCE = {'node', 1, 'u', 0};
 
 time =[3 3];
 
@@ -28,7 +27,7 @@ time =[3 3];
 extrapolate = 1;
 
 
-NR_tol = 10e-9;%1e-11;
+NR_tol = 10e-11;%1e-11;
 max_iter = 40;%20
 n_steps = sum(time(:,2));
 total_time= time(end,1);
@@ -36,7 +35,7 @@ eltype = 'Q8';
 plot = false;
 
 
-[nodes, elements, nen, ngp, numnp, numel, ndm] = generateMesh(eltype, coor, plot, 2, 2, 2);
+[nodes, elements, nen, ngp, numnp, numel, ndm] = generateMesh(eltype, coor, plot, 6, 6, 6);
 [BC, FORCE] = generateBC(BC_T, FRCE, nodes, elements, eltype, ndm, numnp, numel);
 
 nummat = 1;

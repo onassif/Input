@@ -26,7 +26,7 @@ coor = [...
     material = 1; % PlaneStrain
     props = {...
         'E', 200
-        'v', 0.25};
+        'nu', 0.25};
     
     ndof = 2;
     numeq = ndof*numnp;

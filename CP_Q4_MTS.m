@@ -1,42 +1,32 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User input Start
 coor = [...
-    0 0 0 
-    1 0 0 
-    0 1 0
-    1 1 0
-    0 0 1
-    1 0 1
-    0 1 1
-    1 1 1];
+    0 0 
+    1 0 
+    0 1
+    1 1];
 
 BC_T = {...
     'x'   , 0, 'u', 0
     'node', 1, 'v', 0
-    'node', 5, 'v', 0
-    'z'   , 0, 'w', 0
-    'z'   , 1, 'w', 0
     'y'   , 0, 'u', 0.012
-    'y'   , 1, 'u', 0.0132};
+    'y'   , 1, 'u', 0.0132
+};
 
 FRCE = {'x', 0, 'u', 0};
 
 time =[3 3];
-
-
-% fctr(1:size(fctr_BC  ,1),1:size(fctr_BC  ,2),1) =fctr_BC;
-% fctr(1:size(fctr_FRCE,1),1:size(fctr_FRCE,2),2) =fctr_FRCE;
 extrapolate = 1;
 
 
-NR_tol = 10e-9;%1e-11;
+NR_tol = 10e-11;%1e-11;
 max_iter = 40;%20
 n_steps = sum(time(:,2));
 total_time= time(end,1);
-eltype = 'Q8';
+eltype = 'Q4';
 plot = false;
 
 
-[nodes, elements, nen, ngp, numnp, numel, ndm] = generateMesh(eltype, coor, plot, 2, 2, 2);
+[nodes, elements, nen, ngp, numnp, numel, ndm] = generateMesh(eltype, coor, plot, 1, 1, 1);
 [BC, FORCE] = generateBC(BC_T, FRCE, nodes, elements, eltype, ndm, numnp, numel);
 
 nummat = 1;
@@ -83,7 +73,7 @@ hardProps={...
     };
  slipType = 'fcc';
 
-ndof = 3;
+ndof = 2;
 numeq = ndof*numnp;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User input End
 

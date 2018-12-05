@@ -15,7 +15,7 @@ BC_T = {...
     'z', 0, 'w', 0};
 
 FORCE_Tx = {...
-   'x', 1, 'u', 1/2};
+   'x', 1, 'u', 40};
 
 % FORCE_Tx = {...
 %     'x', 1, 'u', 1.0*40
@@ -32,7 +32,7 @@ eltype = 'Q8';
 plot = false;
 
 
-[nodes, elements, nen, ngp, numnp, numel, ndm] = generateMesh(eltype, coor, plot, 4, 4, 4);
+[nodes, elements, nen, ngp, numnp, numel, ndm] = generateMesh(eltype, coor, plot, 2, 2, 1);
 [BC, FORCE] = generateBC(BC_T, FORCE_Tx, nodes, elements, eltype, ndm, numnp, numel);
 nummat = 1;
 material = 1; % Elastic 3D

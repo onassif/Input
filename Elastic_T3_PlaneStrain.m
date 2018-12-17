@@ -19,7 +19,7 @@ coor = [...
     max_iter = 100;%20
     n_steps = 1;
     eltype = 'T3';
-    plot = 0;
+    plot = 1;
     
 
     [nodes, elements, nen, ngp, numnp, numel, ndm] = generateMesh(eltype, coor, plot, 3, 2, 1);

@@ -11,17 +11,16 @@ coor = [...
        'y', 0, 'v', 0}; 
         
     FORCE_Tx = {...
-       'node', 4, 'u', 10
-       'node', 4, 'v', 10};       
+       'x', 1, 'u', 40};       
          
     NR_tol = 1e-10;%1e-11;
     max_iter = 100;%20
     n_steps = 1;
     eltype = 'Q4';
-    plot = 0;
+    plot = 1;
     
 
-    [nodes, elements, nen, ngp, numnp, numel, ndm] = generateMesh(eltype, coor, plot, 1, 1, 1);
+    [nodes, elements, nen, ngp, numnp, numel, ndm] = generateMesh(eltype, coor, plot, 2, 2, 1);
     [BC, FORCE] = generateBC(BC_T, FORCE_Tx, nodes, elements, eltype, ndm, numnp, numel);
 
     nummat = 1;

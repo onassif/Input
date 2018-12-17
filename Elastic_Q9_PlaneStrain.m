@@ -17,8 +17,7 @@ coor = [...
     max_iter = 100;%20
     n_steps = 1;
     eltype = 'Q9';
-    plot = false;
-    
+    plot = 1;
 
     [nodes, elements, nen, ngp, numnp, numel, ndm] = generateMesh(eltype, coor, plot, 3, 3, 1);
     [BC, FORCE] = generateBC(BC_T, FORCE_Tx, nodes, elements, eltype, ndm, numnp, numel);

@@ -29,11 +29,21 @@ NR_tol = 1e-10;%1e-11;
 max_iter = 100;%20
 n_steps = 1;
 eltype = 'Q8';
-plot = 1;
+plot = 0;
 
 
-[nodes, elements, nen, ngp, numnp, numel, ndm] = generateMesh(eltype, coor, plot, 2, 2, 2);
+[nodes, elements, nen, ngp, numnp, numel, ndm] = generateMesh(eltype, coor, plot, 2, 1, 1);
+% nodes =[...
+%    0  0 0
+%    .5 0 0
+%    0 .8 0
+%    1  1 0
+%    0  0 1
+%    .5 0 1
+%    0 .8 1
+%    1  1 1];
 [BC, FORCE] = generateBC(BC_T, FORCE_Tx, nodes, elements, eltype, ndm, numnp, numel);
+
 nummat = 1;
 material = 1; % Elastic 3D
 props = {...
